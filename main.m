@@ -11,7 +11,7 @@ clear all;
 close all;
 
 % No. of vehicles
-N = 20;
+N = 8;
 
 % specify to virtual leader connected vehicles
 connections = [2 3];
@@ -19,12 +19,23 @@ connections2 = [4 5];
 
 [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N);
 
+A = zeros(N);
+A(1,2) = 1;
+A(1,3) = 1;
+A(2,4) = 1;
+A(2,5) = 1;
+A(2,6) = 1;
+A(3,7) = 1;
+A(3,8) = 1;
+l_c = [1 0 0 0 0 0 0 0];
+A_c = [A' l_c'; zeros(1,N+1)];
+
 % random initial values of the reference frame of each vehicle
-xi_init = randn(3,N);
+xi_init = randn(6,N);
 % circle start formation of vehicles around the center
-r_init = zeros(2,N);
+r_init = zeros(3,N);
 for i=1:1:N
-    r_init(:,i) = [cos(2*pi/N*(i-1)); sin(2*pi/N*(i-1))];
+    r_init(:,i) = [cos(2*pi/N*(i-1)); sin(2*pi/N*(i-1)); 0];
 end
 
 % desired relative position / formation around virtual center
@@ -45,24 +56,31 @@ set(result, 'Name', 'Simulation Results Consensus', 'NumberTitle', 'off');
 time = xi_ref_i.time;
 x_ref_i = timeseries(xi_ref_i.data(1,:,:), time, 'Name', 'x-coordinate');
 y_ref_i = timeseries(xi_ref_i.data(2,:,:), time, 'Name', 'y-coordinate');
-theta_ref_i = timeseries(xi_ref_i.data(3,:,:), time, 'Name', 'theta-value');
+z_ref_i = timeseries(xi_ref_i.data(3,:,:), time, 'Name', 'z-coordinate');
+theta_ref_i = timeseries(xi_ref_i.data(4,:,:), time, 'Name', 'theta-value');
+phi_ref_i = timeseries(xi_ref_i.data(5,:,:), time, 'Name', 'theta-value');
+psi_ref_i = timeseries(xi_ref_i.data(6,:,:), time, 'Name', 'theta-value');
 
 subplot(3,2,1), plot(xi_ref);
-legend('x_{ref}','y_{ref}','theta_{ref}');
+legend('x_{ref}','y_{ref}','z_{ref}','theta_{ref}','phi_{ref}','psi_{ref}');
 title('Plot of the reference state (leader)');
 
-subplot(3,2,2), plot(xi_ref.data(:,1),xi_ref.data(:,2));
+subplot(3,2,2), plot3(xi_ref.data(:,1),xi_ref.data(:,2),xi_ref.data(:,3));
 legend('reference trajectory');
 title('Leader trajectory');
 
 subplot(3,2,3), plot(x_ref_i);
-legend('v1','v2','v3','v4', 'v5');
+%legend('v1','v2','v3','v4', 'v5');
 title('Followers x-coordinate');
 
 subplot(3,2,4), plot(y_ref_i);
-legend('v1','v2','v3','v4', 'v5');
+%legend('v1','v2','v3','v4', 'v5');
 title('Followers y-coordinate');
 
-subplot(3,2,5), plot(theta_ref_i);
-legend('v1','v2','v3','v4','v5');
+subplot(3,2,5), plot(z_ref_i);
+%legend('v1','v2','v3','v4', 'v5');
+title('Followers z-coordinate');
+
+subplot(3,2,6), plot(psi_ref_i);
+%legend('v1','v2','v3','v4','v5');
 title('Followers theta-valua');
