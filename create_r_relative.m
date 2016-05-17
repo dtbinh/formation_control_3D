@@ -44,11 +44,11 @@ r_rel_parabol(2,:) = linspace(-1,1,N);
 r_rel_parabol(1,:) = (r_rel_parabol(2,:).^2)*(-1);
 
 % cube shape
-r_rel_cube = [[0.5 0.5 -0.5]' [0.5 -0.5 -0.5]' [-0.5 0.5 -0.5]' [-0.5 -0.5 -0.5]' [0.5 0.5 0.5]' [0.5 -0.5 0.5]' [-0.5 0.5 0.5]' [-0.5 -0.5 0.5]'];
+r_rel_cube = [[0.4 0.4 -0.4]' [0.4 -0.4 -0.4]' [-0.4 0.4 -0.4]' [-0.4 -0.4 -0.4]' [0.4 0.4 0.4]' [0.4 -0.4 0.4]' [-0.4 0.4 0.4]' [-0.4 -0.4 0.4]'];
 
-r_rel_1 = r_rel_line;
+r_rel_3 = r_rel_line;
 r_rel_2 = r_rel_parabol;
-r_rel_3 = r_rel_cube;
+r_rel_1 = r_rel_cube;
 
 
 % plot of formations
