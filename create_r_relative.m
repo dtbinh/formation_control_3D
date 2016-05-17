@@ -69,10 +69,10 @@ for i=1:1:N
 end
 
 subplot(1,3,1);
-plot(0,0,'x');
+plot3(0,0,0,'x');
 subplot(1,3,2);
-plot(0,0,'x');
+plot3(0,0,0,'x');
 subplot(1,3,3);
-plot(0,0,'x');
+plot3(0,0,0,'x');
 end
 
