@@ -19,16 +19,16 @@ connections2 = [4 5];
 
 [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N);
 
-A = zeros(N);
-A(1,2) = 1;
-A(1,3) = 1;
-A(2,4) = 1;
-A(2,5) = 1;
-A(2,6) = 1;
-A(3,7) = 1;
-A(3,8) = 1;
-l_c = [1 0 0 0 0 0 0 0];
-A_c = [A' l_c'; zeros(1,N+1)];
+% A = zeros(N);
+% A(1,2) = 1;
+% A(1,3) = 1;
+% A(2,4) = 1;
+% A(2,5) = 1;
+% A(2,6) = 1;
+% A(3,7) = 1;
+% A(3,8) = 1;
+% l_c = [1 0 0 0 0 0 0 0];
+% A_c = [A' l_c'; zeros(1,N+1)];
 
 % random initial values of the reference frame of each vehicle
 %xi_init = randn(6,N);
