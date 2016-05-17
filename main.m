@@ -31,7 +31,8 @@ l_c = [1 0 0 0 0 0 0 0];
 A_c = [A' l_c'; zeros(1,N+1)];
 
 % random initial values of the reference frame of each vehicle
-xi_init = randn(6,N);
+%xi_init = randn(6,N);
+xi_init = zeros(6,N);
 % circle start formation of vehicles around the center
 r_init = zeros(3,N);
 for i=1:1:N

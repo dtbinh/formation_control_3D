@@ -18,25 +18,27 @@ c = ['b','m','k','r','g','b','m','k','r','g','b','m','k','r','g','b','m',...
     'k','r','g','b','m','k','r','g','b','m','k','r','g','b','m','k','r',...
     'g','b','m','k','r','g','b','m','k','r','g','b','m','k','r','g'];
 
-v = VideoWriter('C:\Users\Jens\Documents\Uni Stuttgart\BA\BA ohne Video\Matlab\Consensus_3D\1 formation_control\Videos\vehicle_trajectories.mp4', 'MPEG-4');
+v = VideoWriter('C:\Users\Jens\Documents\Uni Stuttgart\BA\BA ohne Video\Matlab\Consensus_3D\1 formation_control\Videos\vehicle_trajectories.mp4','MPEG-4');
 v.FrameRate = 60;
+v.Quality = 100;
 open(v);
 opengl('software')
 
 % loop over each data entry of the simout results
-for j=1:30:(timesteps)
+for j=1:5:(timesteps)
     % plot of the reference frame trajectory
     plot3(xi_ref.data(:,1),xi_ref.data(:,2),xi_ref.data(:,3));
     axis([-2 2 -1 3 -1 3]);
+    grid on;
     hold on;
     
     cube = desired_pos_abs(xi_ref.data(j,:)',cube_init);
-    fill3(cube(1,1:1:4),cube(2,1:1:4),cube(3,1:1:4),'m');
-    fill3(cube(1,5:1:8),cube(2,5:1:8),cube(3,5:1:8),'m');
-    fill3(cube(1,9:1:12),cube(2,9:1:12),cube(3,9:1:12),'m');
-    fill3(cube(1,13:1:16),cube(2,13:1:16),cube(3,13:1:16),'m');
-    fill3(cube(1,16:1:20),cube(2,16:1:20),cube(3,16:1:20),'m');
-    fill3(cube(1,21:1:24),cube(2,21:1:24),cube(3,21:1:24),'m');
+    plot3(cube(1,1:1:4),cube(2,1:1:4),cube(3,1:1:4),'m');
+    plot3(cube(1,5:1:8),cube(2,5:1:8),cube(3,5:1:8),'m');
+    plot3(cube(1,9:1:12),cube(2,9:1:12),cube(3,9:1:12),'m');
+    plot3(cube(1,13:1:16),cube(2,13:1:16),cube(3,13:1:16),'m');
+    plot3(cube(1,16:1:20),cube(2,16:1:20),cube(3,16:1:20),'m');
+    plot3(cube(1,21:1:25),cube(2,21:1:25),cube(3,21:1:25),'m');
 
     % loop over each vehicle
     for i=1:1:N
@@ -44,13 +46,13 @@ for j=1:30:(timesteps)
         x = simout1.data(1,i,j);
         y = simout1.data(2,i,j);
         z = simout1.data(3,i,j);
-        scatter3(x,y,z,'d','filled');
+        scatter3(x,y,z,60,c(i),'d','filled');
         
         %plots i-th robot desired position
         x_ref = simout.data(1,i,j);
         y_ref = simout.data(2,i,j);
         z_ref = simout.data(3,i,j);
-        scatter3(x_ref, y_ref, z_ref,'filled','o');
+        scatter3(x_ref, y_ref, z_ref,60,c(i),'filled','o');
         
     end
     writeVideo(v,getframe);

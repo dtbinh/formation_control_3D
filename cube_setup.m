@@ -34,4 +34,6 @@ Z_h = [-0.2 0.2 0.2 -0.2];
 
 Ar_h = [X_h;Y_h;Z_h];
 
-cube_init = [Ar_u Ar_o Ar_l Ar_r Ar_v Ar_h];
+cube_init = [Ar_u Ar_o Ar_l Ar_r Ar_v Ar_h [-0.2 0.2 -0.2]'];
+
+
