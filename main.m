@@ -19,6 +19,7 @@ connections2 = [4 5];
 
 [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N);
 
+% fixed communcation adjacency matrix
 % A = zeros(N);
 % A(1,2) = 1;
 % A(1,3) = 1;

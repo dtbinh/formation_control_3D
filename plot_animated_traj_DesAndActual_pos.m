@@ -3,9 +3,9 @@
 % the relative positions assigned
 
 % number of vehicles
-N = size(simout1.data,2);
+N = size(vehicle_pos.data,2);
 % number of timesteps
-timesteps = size(simout1.data,3);
+timesteps = size(vehicle_pos.data,3);
 
 % cube setup
 cube_setup;
@@ -18,8 +18,8 @@ c = ['b','m','k','r','g','b','m','k','r','g','b','m','k','r','g','b','m',...
     'k','r','g','b','m','k','r','g','b','m','k','r','g','b','m','k','r',...
     'g','b','m','k','r','g','b','m','k','r','g','b','m','k','r','g'];
 
-v = VideoWriter('C:\Users\Jens\Documents\Uni Stuttgart\BA\BA ohne Video\Matlab\Consensus_3D\1 formation_control\Videos\vehicle_trajectories2.mp4','MPEG-4');
-v.FrameRate = 60;
+v = VideoWriter('C:\Users\Jens\Documents\Uni Stuttgart\BA\BA ohne Video\Matlab\Consensus_3D\1 formation_control\Videos\vehicle_trajectories4.mp4','MPEG-4');
+v.FrameRate = 24;
 v.Quality = 50;
 open(v);
 opengl('software')
@@ -43,15 +43,15 @@ for j=1:30:(timesteps)
     % loop over each vehicle
     for i=1:1:N
         % plots the x,y-values of the actual i-th robot position
-        x = simout1.data(1,i,j);
-        y = simout1.data(2,i,j);
-        z = simout1.data(3,i,j);
+        x = vehicle_pos.data(1,i,j);
+        y = vehicle_pos.data(2,i,j);
+        z = vehicle_pos.data(3,i,j);
         scatter3(x,y,z,60,c(i),'d','filled');
         
         %plots i-th robot desired position
-        x_ref = simout.data(1,i,j);
-        y_ref = simout.data(2,i,j);
-        z_ref = simout.data(3,i,j);
+        x_ref = des_pos.data(1,i,j);
+        y_ref = des_pos.data(2,i,j);
+        z_ref = des_pos.data(3,i,j);
         scatter3(x_ref, y_ref, z_ref,60,c(i),'filled','o');
         
     end
