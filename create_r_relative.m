@@ -53,9 +53,9 @@ for i=1:1:N
     r_rel_but(:,i) = [0.3*cos(u)*(exp(cos(u))-2*cos(4*u)-sin(u/12)^5); 0.3*sin(u)*(exp(cos(u))-2*cos(4*u)-sin(u/12)^5); 0];
 end
 
-r_rel_3 = r_rel_line;
-r_rel_2 = r_rel_but;
-r_rel_1 = r_rel_parabol;
+r_rel_3 = r_rel_cube;
+r_rel_2 = r_rel_cube;
+r_rel_1 = r_rel_cube;
 
 
 
