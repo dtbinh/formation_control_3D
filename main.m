@@ -11,7 +11,7 @@ clear all;
 close all;
 
 % No. of vehicles
-N = 8;
+N = 60;
 
 % specify to virtual leader connected vehicles
 connections = [2 3];
