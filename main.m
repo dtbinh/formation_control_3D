@@ -11,27 +11,27 @@ clear all;
 close all;
 
 % No. of vehicles
-N = 8;
+N = 60;
 
 % specify to virtual leader connected vehicles
-connections = [3];
-connections2 = [5];
+connections = [3 4];
+connections2 = [5 8];
 
 [A_c, A_c_2, A, A_2] = graph_create(connections, connections2, N);
 
 % fixed communcation adjacency matrix
-A_2 = zeros(N);
-A_2(1,2) = 1;
-A_2(2,1) = 1;
-A_2(3,2) = 1;
-A_2(4,3) = 1;
-A_2(5,1) = 1;
-A_2(6,3) = 1;
-A_2(7,3) = 1;
-A_2(7,8) = 1;
-l_c = [1 0 0 0 0 0 0 0];
-A_2
-A_c_2 = [A_2 l_c'; zeros(1,N+1)]
+% A_2 = zeros(N);
+% A_2(1,2) = 1;
+% A_2(2,1) = 1;
+% A_2(3,2) = 1;
+% A_2(4,3) = 1;
+% A_2(5,1) = 1;
+% A_2(6,3) = 1;
+% A_2(7,3) = 1;
+% A_2(7,8) = 1;
+% l_c = [1 0 0 0 0 0 0 0];
+% A_2
+% A_c_2 = [A_2 l_c'; zeros(1,N+1)]
 
 % random initial values of the reference frame of each vehicle
 %xi_init = randn(6,N);

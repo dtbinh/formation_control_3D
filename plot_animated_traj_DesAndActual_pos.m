@@ -28,7 +28,7 @@ open(v);
 opengl('software')
 
 % loop over each data entry of the simout results
-for j=1:30:(timesteps)
+for j=1:30:(timesteps/5)
     % plot of the reference frame trajectory
     plot3(xi_ref.data(:,1),xi_ref.data(:,2),xi_ref.data(:,3));
     axis([-2 2 -1 3 -1 3]);
@@ -52,15 +52,16 @@ for j=1:30:(timesteps)
         scatter3(x,y,z,60,c(i),'d','filled');
         
         %plots i-th robot desired position
-        x_ref = des_pos.data(1,i,j);
-        y_ref = des_pos.data(2,i,j);
-        z_ref = des_pos.data(3,i,j);
-        scatter3(x_ref, y_ref, z_ref,60,c(i),'filled','o');
+%         x_ref = des_pos.data(1,i,j);
+%         y_ref = des_pos.data(2,i,j);
+%         z_ref = des_pos.data(3,i,j);
+%         scatter3(x_ref, y_ref, z_ref,60,c(i),'filled','o');
         
     end
     writeVideo(v,getframe);
     %     legend('ref','v1','v1_des','v2','v2_des','v3','v3_des','v4','v4_des');
     hold off;
 end
-
+set(gcf,'color','w');
+export_fig test.pdf
 close(v);
